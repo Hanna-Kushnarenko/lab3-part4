@@ -26,8 +26,11 @@ g++ -Ofast array.cpp -o test4
 time ./test4
 echo -e "\n"
 
-extn = "sse2 ssse3 sse4.2 avx"
-for flag in $extn
+grep 'flags' /proc/cpuinfo | uniq
+echo -e "\n"
+
+extn=(sse2 ssse3 sse4.2 avx)"
+for flag in ${extn[@]}
 do
 icc -std=c++11 -x$flag -O2 array.cpp -o nexttest
 if [$? -eq 0]
