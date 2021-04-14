@@ -2,6 +2,7 @@
 #include<iostream>
  #include <cstdlib>
 #include <time.h>
+#include <cmath>
 using namespace std;
  
 // A structure representing a node of a linked list.
@@ -151,7 +152,7 @@ int main()
 	struct node *tail = new node;
 	head = NULL;
 	tail = NULL;
-	long n =1000000;
+	long long n =10e8;
  
  
 	// Create linked list.
@@ -159,7 +160,7 @@ int main()
 	{
 	
 		num =rrand(-100000, 1000000);
- 
+        pow(num,10000);
 		tail = AddToList(tail, num);
 		if(head == NULL)
 			head = tail;
