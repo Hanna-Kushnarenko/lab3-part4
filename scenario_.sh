@@ -29,7 +29,7 @@ echo -e "\n"
 grep 'flags' /proc/cpuinfo | uniq
 echo -e "\n"
 
-extn=(sse2 ssse3 sse4.2 avx)"
+extn=(sse2 ssse3 sse4.2 avx)
 for flag in ${extn[@]}
 do
 icc -std=c++11 -x$flag -O2 prog.cpp -o nexttest
