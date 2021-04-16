@@ -1,57 +1,27 @@
-// A Dynamic Programming based solution for 0-1 Knapsack problem
-#include <iostream>
+
+ #include <iostream>
+#include <math.h>
+#include <stdlib.h>
  
 using namespace std;
  
-// A utility function that returns maximum of two integers
-int max(int a, int b)
+int main(int argc, char **argv)
 {
-    return (a > b) ? a : b;
-}
- 
-// Returns the maximum value that can be put in a knapsack of capacity W
-int knapSack(int W, int wt[], int val[], int n)
-{
-    int i, w;
-    int K[n + 1][W + 1];
- 
-    // Build table K[][] in bottom up manner
-    for (i = 0; i <= n; i++)
+    int p = 7, l = 3, g = 2, n = 4, x;
+    int a[] = { 1, 2, 2, 1 };
+    int bin[4];
+    cout << "The Random numbers are: ";
+    for (int i = 0; i < 10; i++)
     {
-        for (w = 0; w <= W; w++)
+        x = rand() % 16;
+        for (int j = 3; j >= 0; j--)
         {
-            if (i == 0 || w == 0)
-                K[i][w] = 0;
-            else if (wt[i - 1] <= w)
-                K[i][w]
-                        = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
-            else
-                K[i][w] = K[i - 1][w];
+            bin[j] = x % 2;
+            x /= 2;
         }
+        int mul = 1;
+        for (int k = 0; k < 4; k++)
+            mul *= pow(a[k], bin[k]);
+        cout << pow(g, mul)<<" ";
     }
- 
-    return K[n][W];
-}
- 
-int main()
-{
-    cout << "Enter the number of items in a Knapsack:";
-    int n, W;
-    cin >> n;
-    int val[n], wt[n];
-    for (int i = 0; i < n; i++)
-    {
-        cout << "Enter value and weight for item " << i << ":";
-        cin >> val[i];
-        cin >> wt[i];
-    }
- 
-    //    int val[] = { 60, 100, 120 };
-    //    int wt[] = { 10, 20, 30 };
-    //    int W = 50;
-    cout << "Enter the capacity of knapsack";
-    cin >> W;
-    cout << knapSack(W, wt, val, n);
- 
-    return 0;
 }
