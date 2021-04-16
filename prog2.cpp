@@ -2,7 +2,7 @@
  #include <iostream>
 #include <math.h>
 #include <stdlib.h>
- 
+ #include <fstream>
 using namespace std;
  
 #define MAX_NUM 50
@@ -30,6 +30,14 @@ void gen_sieve_primes(void)
  
 void print_all_primes()
 {
+   std::ofstream out;          // поток для записи
+    out.open("/file.txt"); // окрываем файл для записи
+    if (out.is_open())
+    {
+       // out << "Hello World!" << std::endl;
+    
+   
+   
     int c = 0;
     for (int i = 0; i < MAX_NUM; i++)
     {
@@ -42,13 +50,13 @@ void print_all_primes()
                 switch (c)
                 {
                     case 1:
-                        cout << c << "st prime is: " << i << endl;
+                        out << c << "st prime is: " << i << std::endl;
                         break;
                     case 2:
-                        cout << c << "nd prime is: " << i << endl;
+                         out << c << "st prime is: " << i << std::endl;
                         break;
                     case 3:
-                        cout << c << "rd prime is: " << i << endl;
+                         out << c << "st prime is: " << i << std::endl;
                         break;
  
                     default:
@@ -57,9 +65,11 @@ void print_all_primes()
             }
  
             else
-                cout << c << "th prime is: " << i << endl;
+               out << c << "st prime is: " << i << std::endl;
         }
     }
+}
+  return 0;
 }
  
 int main()
